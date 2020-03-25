@@ -1,0 +1,23 @@
+export const mapping = {
+    "Lombardia": "Lombardy",
+    "Emilia-Romagna": "Emilia Romagna",
+    "Veneto": "Veneto",
+    "Piemonte": "Piemonte",
+    "Marche": "Marche",
+    "Toscana": "Tuscany",
+    "Liguria": "Liguria",
+    "Lazio": "Lazio",
+    "Campania": "Campania",
+    "Trentino-Alto Adige": "Trentino",
+    "Apulia": "Puglia",
+    "Friuli-Venezia Giulia": "Friuli V.G.",
+    "South Tyrol": "South Tyrol",
+    "Sicily": "Sicily",
+    "Abruzzo": "Abruzzo",
+    "Umbria": "Umbria",
+    "Valle d'Aosta": "Valle d'Aosta",
+    "Sardegna": "Sardinia",
+    "Calabria": "Calabria",
+    "Basilicata": "Basilicata",
+    "Molise": "Molise" 
+  }
