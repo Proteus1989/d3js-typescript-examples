@@ -49,11 +49,11 @@ const svg = d3
   .attr("style", "background-color: #FBFAF0");
 
 const aProjection = d3.geoAlbers()
-.center([0, 41])
-.rotate([347, 0])
-.parallels([35, 45])
-.scale(2500)
-.translate([width / 2, (height / 2) - 50 ]);
+  .center([0, 41])
+  .rotate([347, 0])
+  .parallels([35, 45])
+  .scale(2500)
+  .translate([width / 2, (height / 2) - 50 ]);
 
 
 const geoPath = d3.geoPath().projection(aProjection);
