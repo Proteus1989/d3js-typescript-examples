@@ -4,7 +4,7 @@ import * as d3 from "d3";
 import * as topojson from "topojson-client";
 const spainjson = require("./spain.json");
 const d3Composite = require("d3-composite-projections");
-import { latLongCommunities } from "./communities";
+import { latLongCommunities, LongLatCommunity } from "./communities";
 import { stats, stats21032020, ResultEntry } from "./stats";
 
 const maxAffected = (data) => data.reduce(
@@ -71,16 +71,12 @@ const mouseOver = (d, data) =>
       .style("top", `${d3.event.pageY - 28}px`);
 }
 
-const mouseOut = (component) =>
+const mouseOut = () =>
 {
-  d3.select(component)
-      .transition()
-      .duration(500)
-      .attr("transform", ``);
-    div
-      .transition()
-      .duration(500)
-      .style("opacity", 0);
+  div
+    .transition()
+    .duration(500)
+    .style("opacity", 0);
 }
 
 svg
@@ -96,22 +92,20 @@ svg
     mouseOver(d, stats);
   })
   .on("mouseout", function(d, i) {
-    mouseOut(this);
+    mouseOut();
   });
 
   // Update buttons
 
 const updateChart = (data) => {
-  svg.selectAll("circle")
-    .data(latLongCommunities)
+  svg.selectAll<HTMLDivElement, LongLatCommunity>("circle")
+    .transition().duration(500)
     .attr("r", d => calculateRadiusBasedOnAffectedCases(d.name, data))
-    .attr("cx", d => aProjection([d.long, d.lat])[0])
-    .attr("cy", d => aProjection([d.long, d.lat])[1])
     .on("mouseover", function(d) {
       mouseOver(d, data);
     })
     .on("mouseout", function(d, i) {
-      mouseOut(this);
+      mouseOut();
     });
 };
 

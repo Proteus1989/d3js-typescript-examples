@@ -1,3 +1,10 @@
+export interface LongLatCommunity
+{
+  name: string,
+  long: number,
+  lat: number
+}
+
 export const latLongCommunities = [
   {
     name: "Madrid",

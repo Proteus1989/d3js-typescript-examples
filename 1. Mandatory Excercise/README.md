@@ -21,6 +21,30 @@ npm install
 npm start
 ```
 
+# Code Annotations
+
+Typing communities
+```typescript
+export interface LongLatCommunity
+{
+    name: string,
+    long: number,
+    lat: number
+}
+```
+Adding the animation
+```typescript
+svg.selectAll<HTMLDivElement, LongLatCommunity>("circle")
+    .transition().duration(500)
+    .attr("r", d => calculateRadiusBasedOnAffectedCases(d.name, data))
+    .on("mouseover", function(d) {
+      mouseOver(d, data);
+    })
+    .on("mouseout", function(d, i) {
+      mouseOut(this);
+});
+```
+
 # Acknowledgements
 
 - Spain topojson info: <br>

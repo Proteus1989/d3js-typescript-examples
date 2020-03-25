@@ -21,6 +21,67 @@ npm install
 npm start
 ```
 
+# Code Annotations
+
+Typing communities
+```typescript
+export interface LongLatCommunity
+{
+    name: string,
+    long: number,
+    lat: number
+}
+```
+Adding the animation
+```typescript
+svg.selectAll<HTMLDivElement, LongLatCommunity>("circle")
+    .transition().duration(500)
+    .attr("r", d => calculateRadiusBasedOnAffectedCases(d.name, data))
+    .on("mouseover", function(d) {
+      mouseOver(d, data);
+    })
+    .on("mouseout", function(d, i) {
+      mouseOut(this);
+});
+```
+Mapping community names
+```typescript
+export const mapping = {
+    "Andalucía": "Andalucía",
+    "Aragón": "Aragón",
+    "Cantabria": "Cantabria",
+    "Castilla y León": "Castilla y León",
+    "Castilla-La Mancha": "Castilla La Mancha",
+    "Cataluña": "Cataluña",
+    "Ceuta y Melilla": "Ceuta y Melilla",
+    "Comunidad de Madrid": "Madrid",
+    "Comunidad Foral de Navarra": "Navarra",
+    "Comunidad Valenciana": "Valencia",
+    "Extremadura": "Extremadura",
+    "Galicia": "Galicia",
+    "Islas Baleares": "Islas Baleares",
+    "Islas Canarias": "Islas Canarias",
+    "La Rioja": "La Rioja",
+    "País Vasco": "País Vasco",
+    "Principado de Asturias": "Asturias",
+    "Región de Murcia": "Murcia"
+}
+```
+Changing community color
+```typescript
+svg
+    .selectAll("path")
+    .transition().duration(500)
+    .attr("fill", (d) => getColorByFeatureCommunity(d, data));
+```
+Calculating the color
+```typescript
+const getColorByFeatureCommunity = (d, data) => {
+    const color = getColor(mapCommunity(d["properties"]["NAME_1"]), data);
+    return `hsla(360,90%,${color}%,1)`;
+};
+```
+
 # Acknowledgements
 
 - Spain topojson info: <br>
